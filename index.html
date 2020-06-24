@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de fumante</title>
+    <style>
+        body{
+            font: normal 18pt TimesNewRoman;
+        }
+        input{
+            font: normal 18pt TimesNewRoman;
+            width: 100px;
+        }
+        div {
+            margin-top: 25px;
+            font: normal 25pt Impact;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem vindo, fumante!</h1>
+    <h2>Calculadora de tabaco:</h2>
+    <p>Por gentileza, digite no primeiro campo à esquerda quantos cigarros de tabaco você fuma por dia</p>
+    <p>No campo à direita, informe quanto custa cada pacote do seu tabaco</p>
+    <input type="number" name="txtn1" id="txtn1">
+    <input type="number" name="txtn2" id="txtn2">
+    <input type="button" value="Calcular" onclick="calcula()">
+    <div id='res'></div>
+    <h2>Calculadora de cigarro:</h2>
+    <p>Para o cálculo, insira no campo da esquerda quantos cigarros você fuma por dia</p>
+    <p>No campo à direita, digite quanto custa cada maço de cigarros</p>
+    <input type="number" name="txtn3" id="txtn3">
+    <input type="number" name='txtn4' id='txtn4'>
+    <input type="button" value="Calcular" onclick="calcular()">
+    <div id='resu'></div>
+    <h2>Calculadora de maconha:</h2>
+    <p>Insira no campo da esquerda quantos bec's você fuma por <strong>semana</strong></p>
+    <p>No campo à direita, digite, em média, quanto você paga em 1g</p>
+    <p>(resultado lá embaixo)</p>
+    <input type="number" name="txtn5" id="txtn5">
+    <input type="number" name='txtn6' id='txtn6'>
+    <input type="button" value="Calcular" onclick="calculao()">
+    <div id='resul'></div>
+
+    <script>
+        function calcula() {
+                var tn1 = window.document.getElementById('txtn1')
+                var tn2 = window.document.getElementById('txtn2')
+                var result = window.document.getElementById('res')
+                var n1 = Number(tn1.value) 
+                var n2 = Number(tn2.value)
+                var s = 365 * n1 * n2 / 40
+                var seda = 365 * n1 * 6 / 50
+                var totalseda = s + seda
+                s.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+                result.innerHTML = `Ao fumar ${n1} tabacos por dia, considerando a média de 40 cigarros a cada 25g de tabaco (em um pacote,) a ${n2.toFixed(2)} reais cada, você gasta aproximadamente R$: <strong>${s.toFixed(2)}</strong> por ano. Se também compras a seda, o total é R$: ${totalseda.toFixed(2)}!` 
+        }
+        function calcular() {
+                var tn3 = document.getElementById('txtn3')
+                var tn4 = document.getElementById('txtn4')
+                var resulto = document.getElementById('resu')
+                var n3 = Number(tn3.value)
+                var n4 = Number(tn4.value)
+                var ss = 365 * n3 * n4 / 20
+                resulto.innerHTML = `Ao fumar ${n3} cigarros por dia, considerando a média de 20 cigarros por maço, a ${n4.toFixed(2)} reais cada maço, você gasta aproximadamente R$: <strong>${ss.toFixed(2)}</strong> por ano` 
+        }   
+        function calculao() {
+                var tn5 = document.getElementById('txtn5')
+                var tn6 = document.getElementById('txtn6')
+                var resultop = document.getElementById('resul')
+                var n5 = Number(tn5.value)
+                var n6 = Number(tn6.value)
+                var sss = 365 * n5 * n6 / 7
+                var seda = 365 * n5 * 6 / 50 / 7
+                var ssedatotal = sss + seda
+                resultop.innerHTML = `Ao fumar ${n5} bec's por semana, considerando a média de 1g por bec, a ${n6.toFixed(2)} reais a grama, você gasta aproximadamente R$: <strong>${sss.toFixed(2)}</strong> por ano. Com a seda, dá ${ssedatotal.toFixed(2)}` 
+        
+
+        }
+    </script>
+    
+</body>
+</html>
